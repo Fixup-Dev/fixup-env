@@ -18,39 +18,40 @@ A fast, zero-telemetry CLI tool for managing environment variables in JavaScript
 ## Quick Start
 
 ```bash
-# Build the tool first
-pnpm build
+# Install fixup-env
+npm install fixup-env
 
-# View all available commands
-pnpm cli --help
+# Or with pnpm
+pnpm add fixup-env
+
+# Or with yarn
+yarn add fixup-env
 
 # Initialize fixup-env in a project
-pnpm cli init
+npx fixup-env init
 
 # Validate your environment variables
-pnpm cli check
+npx fixup-env check
 
 # Generate .env.example file
-pnpm cli sync --write-example
+npx fixup-env sync --write-example
 
 # Generate TypeScript types
-pnpm cli types
+npx fixup-env types
 
 # Get explanation about a specific environment variable
-pnpm cli explain API_URL
+npx fixup-env explain API_URL
 ```
 
 ## Development Workflow
 
 ```bash
-# During development (run directly from source)
-pnpm cli:dev check
-pnpm cli:dev init
-pnpm cli:dev sync --write-example
-
-# For production
+# For development (if working on the tool itself)
 pnpm build
 pnpm cli check
+
+# For using the tool in projects
+npx fixup-env check
 ```
 
 ## Features
@@ -178,7 +179,7 @@ fixup-env init --json
 ### 1. **Project Setup**
 ```bash
 # In a new project
-pnpm cli init --typescript
+npx fixup-env init --typescript
 # This creates:
 # - env.schema.ts (Zod schema)
 # - .env.example
@@ -189,13 +190,13 @@ pnpm cli init --typescript
 ### 2. **Environment Validation**
 ```bash
 # Validate your .env files
-pnpm cli check
+npx fixup-env check
 
 # With custom schema
-pnpm cli check --schema my-schema.ts
+npx fixup-env check --schema my-schema.ts
 
 # For CI/CD (JSON output)
-pnpm cli check --json --ci
+npx fixup-env check --json --ci
 ```
 
 ### 3. **Schema Management**
@@ -228,7 +229,7 @@ jobs:
         with:
           node-version: '20'
       - run: npm ci
-      - run: pnpm cli check --ci
+      - run: npx fixup-env check --ci
 ```
 
 ### Package.json Scripts
@@ -236,10 +237,10 @@ jobs:
 ```json
 {
   "scripts": {
-    "env:check": "pnpm cli check",
-    "env:sync": "pnpm cli sync --write-example",
-    "env:types": "pnpm cli types",
-    "postinstall": "pnpm cli check --ci || true"
+    "env:check": "npx fixup-env check",
+    "env:sync": "npx fixup-env sync --write-example",
+    "env:types": "npx fixup-env types",
+    "postinstall": "npx fixup-env check --ci || true"
   }
 }
 ```
@@ -317,7 +318,7 @@ export default {
 ### Monorepos
 Use workspace-specific schemas:
 ```bash
-pnpm cli check --schema packages/app/env.schema.ts
+npx fixup-env check --schema packages/app/env.schema.ts
 ```
 
 ### Next.js
@@ -329,7 +330,7 @@ const { loadEnvConfig } = require('@next/env');
 loadEnvConfig(process.cwd());
 
 // Then run fixup-env
-require('child_process').execSync('pnpm cli check', { stdio: 'inherit' });
+require('child_process').execSync('npx fixup-env check', { stdio: 'inherit' });
 ```
 
 ### Vite

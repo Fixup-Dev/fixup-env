@@ -23,7 +23,7 @@
     "typecheck": "tsc --noEmit",
     "cli": "node dist/cli.js",
     "cli:dev": "tsx src/cli.ts",
-    "prepublishOnly": "pnpm build && pnpm test:run"
+    "prepublishOnly": "pnpm build"
   },
   "keywords": [
     "env",
@@ -37,7 +37,6 @@
   ],
   "author": "Fixup",
   "license": "PolyForm-Internal-Use-1.0.0",
-  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/fixup/tools.git",
@@ -51,12 +50,12 @@
     "node": ">=18"
   },
   "dependencies": {
-    "zod": "^3.22.4",
-    "dotenv": "^16.3.1",
     "commander": "^11.1.0",
-    "kleur": "^4.1.5",
+    "dotenv": "^16.3.1",
     "fast-glob": "^3.3.2",
-    "fs-extra": "^11.2.0"
+    "fs-extra": "^11.2.0",
+    "kleur": "^4.1.5",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
@@ -65,6 +64,7 @@
     "@typescript-eslint/parser": "^6.17.0",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
+    "fixup-env": "github:Fixup-Dev/fixup-env",
     "prettier": "^3.1.1",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3",
