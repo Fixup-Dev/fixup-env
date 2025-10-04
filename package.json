@@ -1,0 +1,76 @@
+{
+  "name": "fixup-env",
+  "version": "1.0.0",
+  "description": "A fast, zero-telemetry CLI tool for managing environment variables in JavaScript/TypeScript projects",
+  "type": "module",
+  "main": "./dist/index.js",
+  "bin": {
+    "fixup-env": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "format": "prettier --write .",
+    "typecheck": "tsc --noEmit",
+    "cli": "node dist/cli.js",
+    "cli:dev": "tsx src/cli.ts",
+    "prepublishOnly": "pnpm build && pnpm test:run"
+  },
+  "keywords": [
+    "env",
+    "environment",
+    "variables",
+    "validation",
+    "typescript",
+    "cli",
+    "dotenv",
+    "schema"
+  ],
+  "author": "Fixup",
+  "license": "PolyForm-Internal-Use-1.0.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fixup/tools.git",
+    "directory": "fixup-env"
+  },
+  "bugs": {
+    "url": "https://github.com/fixup/tools/issues"
+  },
+  "homepage": "https://github.com/fixup/tools/tree/main/fixup-env#readme",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "zod": "^3.22.4",
+    "dotenv": "^16.3.1",
+    "commander": "^11.1.0",
+    "kleur": "^4.1.5",
+    "fast-glob": "^3.3.2",
+    "fs-extra": "^11.2.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^20.10.6",
+    "@typescript-eslint/eslint-plugin": "^6.17.0",
+    "@typescript-eslint/parser": "^6.17.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.1.1",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3",
+    "vitest": "^1.1.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

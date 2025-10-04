@@ -1,0 +1,14 @@
+{
+  "name": "basic-example",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "env:check": "fixup-env check",
+    "env:sync": "fixup-env sync --write-example",
+    "env:types": "fixup-env types",
+    "postinstall": "fixup-env check --ci || true"
+  },
+  "devDependencies": {
+    "fixup-env": "^1.0.0"
+  }
+}
